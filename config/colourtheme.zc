@@ -6,3 +6,10 @@ filebar_bg:#212121
 filebar_fg:#ffffff
 popup_bg:#393939
 popup_fg:#ffffff
+syn_hl.keyword:#8c00ff
+syn_hl.identifier:#cf8a00
+syn_hl.constant:#ff6f00
+syn_hl.string:#8ae0ff
+syn_hl.special:#d4d4d4
+syn_hl.operator:#c90a00
+syn_hl.comment:#707070
