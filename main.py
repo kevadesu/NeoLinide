@@ -74,6 +74,10 @@ def open_file():
         editor.insert("1.0", file.read())
         set_file_path(path)
 
+def open_folder():
+    path = tkinter.filedialog.askdirectory()
+    print(path)
+
 def load_extension():
     path = askopenfilename(filetypes=[("All Files", "*.*")])
     with open(path, "r") as file:
@@ -82,6 +86,9 @@ def load_extension():
 def get_file_extension(fpath):
     splitpath = fpath.split(".")
     return splitpath[len(splitpath) - 1]
+
+def get_lang(fpath):
+    return get_file_extension(fpath)
 
 def run():
     if file_path:
@@ -116,7 +123,7 @@ def about():
     about.geometry("750x250")
     about.title("About")
     about.configure(bg=colour_theme["popup_bg"])
-    about1 = Label(about, bg=colour_theme["popup_bg"], fg=colour_theme["popup_fg"], text="Zeditor", font=("Consolas", 25))
+    about1 = Label(about, bg=colour_theme["popup_bg"], fg=colour_theme["popup_fg"], text="Linide", font=("Consolas", 25))
     about2 = Label(about, bg=colour_theme["popup_bg"], fg=colour_theme["popup_fg"], text=f'Version {version}')
 
     about1.pack()
@@ -134,11 +141,13 @@ root.bind("<Control-k>", lambda x: keybinds())
 root.bind("<Control-o>", lambda x: open_file())
 root.bind("<Control-e>", lambda x: load_extension())
 root.bind("<Key>", lambda x: codeHighlight())
+# on keypress find language for syntax highlighting and debugging
 menu_bar = Menu(root)
 
 # File bar
 file_bar = Menu(menu_bar, tearoff=0)
 file_bar.add_command(label="Open", command=open_file)
+file_bar.add_command(label="Open Folder", command=open_folder)
 file_bar.add_command(label="Save", command=save_as)
 file_bar.add_command(label="Save As", command=save_as)
 file_bar.add_command(label="Exit", command=exit)
