@@ -1,3 +1,6 @@
+# Linide is based on Zeditor
+# https://github.com/zeondev/Zeditor
+
 import requests
 from tkinter import *
 from tkinter.filedialog import asksaveasfilename, askopenfilename, askopenfile
