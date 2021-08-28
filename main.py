@@ -157,7 +157,8 @@ def key_pressed(k):
     file_lang = get_lang(file_path)
     codeHighlight()
     key_press_history.append(k.char)
-    print(key_press_history)
+    #print(k)
+    #print(key_press_history)
 
 menu_bar = Menu(root)
 
