@@ -192,7 +192,7 @@ root.grid_columnconfigure(1, weight=1)
 
 # Make editor
 
-editor = Text(root, width=75, bg=editor_theme["editor_bg"], fg=editor_theme["editor_fg"], font="Consolas")
+editor = Text(root, width=75, bg=editor_theme["editor_bg"], fg=editor_theme["editor_fg"], font=editor_theme["editor_font"])
 
 editor.grid(row=0, column=1, sticky="nsew")
 root.grid_rowconfigure(0, weight=1)
@@ -200,7 +200,7 @@ root.grid_columnconfigure(0, weight=1)
 
 # Output
 
-code_out = Text(root, height=8, width=75, bg=editor_theme["out_bg"], fg=editor_theme["out_fg"], font="Consolas", state="normal")
+code_out = Text(root, height=8, width=75, bg=editor_theme["out_bg"], fg=editor_theme["out_fg"], font=editor_theme["out_font"], state="normal")
 
 code_out.grid(row=1, column=1, sticky="nsew")
 root.grid_rowconfigure(1, weight=0)
