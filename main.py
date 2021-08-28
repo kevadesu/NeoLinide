@@ -130,6 +130,7 @@ def about():
     about2.pack()
 
 def codeHighlight():
+    """
     editor.tag_config("syn_hl.keyword", foreground=colour_theme["syn_hl.keyword"])
     editor.tag_config("syn_hl.identifier", foreground=colour_theme["syn_hl.identifier"])
     editor.tag_config("syn_hl.constant", foreground=colour_theme["syn_hl.constant"])
@@ -144,6 +145,7 @@ def codeHighlight():
     editor.tag_add("syn_hl.special", "1.16", "1.20")
     editor.tag_add("syn_hl.operator", "1.20", "1.24")
     editor.tag_add("syn_hl.comment", "1.24", "1.28")
+    """
     return 0
 
 # Configure stuff
