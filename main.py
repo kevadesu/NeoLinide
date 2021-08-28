@@ -138,9 +138,7 @@ def codeHighlight():
     editor.tag_config("syn_hl.special", foreground=colour_theme["syn_hl.special"])
     editor.tag_config("syn_hl.operator", foreground=colour_theme["syn_hl.operator"])
     editor.tag_config("syn_hl.comment", foreground=colour_theme["syn_hl.comment"])
-    syn_hl_tokens = [
-        ["string", "1.0", "1.50"]
-    ]
+    syn_hl_tokens = []
     """
     editor.tag_add("syn_hl.keyword", "1.0", "1.4")
     editor.tag_add("syn_hl.identifier", "1.4", "1.8")
