@@ -14,6 +14,8 @@ version = "0.1.0"
 root = Tk()
 root.title("Linide")
 file_path = ""
+file_lang = "py"
+key_press_history = []
 
 # Defs
 
@@ -130,7 +132,6 @@ def about():
     about2.pack()
 
 def codeHighlight():
-    
     editor.tag_config("syn_hl.keyword", foreground=editor_theme["syn_hl.keyword"])
     editor.tag_config("syn_hl.identifier", foreground=editor_theme["syn_hl.identifier"])
     editor.tag_config("syn_hl.constant", foreground=editor_theme["syn_hl.constant"])
@@ -152,14 +153,12 @@ def codeHighlight():
         editor.tag_add(f"syn_hl.{tok[0]}" if editor_theme[f"syn_hl.{tok[0]}"] != None else f"syn_hl.editor_fg", tok[1], tok[2])
     return 0
 
-# Configure stuff
-root.bind("<Control-s>", lambda x: save_as())
-root.bind("<Control-r>", lambda x: run())
-root.bind("<Control-k>", lambda x: keybinds())
-root.bind("<Control-o>", lambda x: open_file())
-root.bind("<Control-e>", lambda x: load_extension())
-root.bind("<Key>", lambda x: codeHighlight())
-# on keypress find language for syntax highlighting and debugging
+def key_pressed(k):
+    file_lang = get_lang(file_path)
+    codeHighlight()
+    key_press_history.append(k.char)
+    print(key_press_history)
+
 menu_bar = Menu(root)
 
 # File bar
@@ -205,6 +204,15 @@ code_out = Text(root, height=8, width=75, bg=editor_theme["out_bg"], fg=editor_t
 code_out.grid(row=1, column=1, sticky="nsew")
 root.grid_rowconfigure(1, weight=0)
 root.grid_columnconfigure(0, weight=1)
+
+# Configure stuff
+root.bind("<Control-s>", lambda x: save_as())
+root.bind("<Control-r>", lambda x: run())
+root.bind("<Control-k>", lambda x: keybinds())
+root.bind("<Control-o>", lambda x: open_file())
+root.bind("<Control-e>", lambda x: load_extension())
+editor.bind("<Key>", key_pressed)
+# on keypress find language for syntax highlighting and debugging
 
 # Open window
 root.geometry("1100x750")
