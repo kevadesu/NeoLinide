@@ -7,6 +7,8 @@ from tkinter.filedialog import asksaveasfilename, askopenfilename, askopenfile
 import tkinter.messagebox
 import subprocess
 
+print ("Launching Linide 0.1.0...")
+
 # Vars
 version = "0.1.0"
 
