@@ -1,22 +1,25 @@
 # Linide is based on Zeditor
 # https://github.com/zeondev/Zeditor
 
+from os import write
 import requests
 from tkinter import *
 from tkinter.filedialog import asksaveasfilename, askopenfilename, askopenfile
 import tkinter.messagebox
 import subprocess
-
-print ("Launching Linide 0.1.0...")
+import sys
+from sys import exit
 
 # Vars
 version = "0.1.0"
+
+print (f"Launching Linide {version}...")
 
 # Make window
 root = Tk()
 root.title("Linide")
 file_path = ""
-file_lang = "py"
+file_lang = "py" # development default
 key_press_history = []
 
 # Defs
@@ -133,6 +136,10 @@ def about():
     about1.pack()
     about2.pack()
 
+def write_temp():
+    with open("temp", "w") as f:
+        f.write(editor.get("1.0",'end-1c'))
+
 def codeHighlight():
     editor.tag_config("syn_hl.keyword", foreground=editor_theme["syn_hl.keyword"])
     editor.tag_config("syn_hl.identifier", foreground=editor_theme["syn_hl.identifier"])
@@ -141,6 +148,9 @@ def codeHighlight():
     editor.tag_config("syn_hl.special", foreground=editor_theme["syn_hl.special"])
     editor.tag_config("syn_hl.operator", foreground=editor_theme["syn_hl.operator"])
     editor.tag_config("syn_hl.comment", foreground=editor_theme["syn_hl.comment"])
+
+    write_temp()
+
     syn_hl_tokens = []
     """
     editor.tag_add("syn_hl.keyword", "1.0", "1.4")
@@ -151,13 +161,19 @@ def codeHighlight():
     editor.tag_add("syn_hl.operator", "1.20", "1.24")
     editor.tag_add("syn_hl.comment", "1.24", "1.28")
     """
+
+    import extension_tests.py_lang_tokenizer as pytok
+    try: syn_hl_tokens = pytok.lexer("temp")
+    except: pass
+
     for tok in syn_hl_tokens:
         editor.tag_add(f"syn_hl.{tok[0]}" if editor_theme[f"syn_hl.{tok[0]}"] != None else f"syn_hl.editor_fg", tok[1], tok[2])
     return 0
 
 def key_pressed(k):
     file_lang = get_lang(file_path)
-    codeHighlight()
+    write_temp()
+    #codeHighlight()
     key_press_history.append(k.char)
     #print(k)
     #print(key_press_history)
@@ -219,4 +235,8 @@ editor.bind("<Key>", key_pressed)
 
 # Open window
 root.geometry("1100x750")
-root.mainloop()
+
+while True:
+    root.update()
+    codeHighlight()
+
