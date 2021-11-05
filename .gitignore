@@ -46,5 +46,7 @@ ENV/
 env.bak/
 venv.bak/
 
-extension_tests/
+# Ignore extension_tests except for py_lang_tokenizer.py
+extension_tests/test.py
+extension_tests/toktest.txt
 temp
