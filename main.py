@@ -25,6 +25,7 @@ key_press_history = []
 # Defs
 
 def parseconf(fl):
+    # Reads config file and returns a dict of key:value pairs
     cfg = {}
     with open(fl) as cfile:
         # strip at newline
@@ -141,6 +142,9 @@ def write_temp():
         f.write(editor.get("1.0",'end-1c'))
 
 def codeHighlight():
+    # TODO: fix syntax highlighting
+    # TODO: make the syntax highlighting work with multiple languages
+
     editor.tag_config("syn_hl.keyword", foreground=editor_theme["syn_hl.keyword"])
     editor.tag_config("syn_hl.identifier", foreground=editor_theme["syn_hl.identifier"])
     editor.tag_config("syn_hl.constant", foreground=editor_theme["syn_hl.constant"])
@@ -236,7 +240,8 @@ editor.bind("<Key>", key_pressed)
 # Open window
 root.geometry("1100x750")
 
+# TODO: Add tabbed editor
+
 while True:
     root.update()
     codeHighlight()
-
