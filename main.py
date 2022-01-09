@@ -11,13 +11,13 @@ import sys
 from sys import exit
 
 # Vars
-version = "0.1.0"
+version = "0.1.1"
 
-print (f"Launching Linide {version}...")
+print (f"Launching NeoLinide {version}...")
 
 # Make window
 root = Tk()
-root.title("Linide")
+root.title("NeoLinide")
 file_path = ""
 file_lang = "py" # development default
 key_press_history = []
