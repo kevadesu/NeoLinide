@@ -13,5 +13,5 @@ syn_hl.identifier:#007fff
 syn_hl.constant:#ff4000
 syn_hl.string:#8ae0ff
 syn_hl.special:#d4d4d4
-syn_hl.operator:#00ebb0
+syn_hl.operator:#00d6a1
 syn_hl.comment:#616161
