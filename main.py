@@ -187,7 +187,6 @@ menu_bar = Menu(root)
 # File bar
 file_bar = Menu(menu_bar, tearoff=0)
 file_bar.add_command(label="Open", command=open_file)
-file_bar.add_command(label="Open Folder", command=open_folder)
 file_bar.add_command(label="Save", command=save_as)
 file_bar.add_command(label="Save As", command=save_as)
 file_bar.add_command(label="Exit", command=exit)
@@ -204,19 +203,11 @@ menu_bar.add_cascade(label="Option", menu=option_bar)
 # Tell window to add bar
 root.config(menu=menu_bar)
 
-# Make file bar
-
-filebar = Listbox(root, height=100, width=15, bg=editor_theme["filebar_bg"], fg=editor_theme["filebar_fg"])
-
-filebar.grid(row=0, column=0, sticky="nsew")
-root.grid_rowconfigure(0, weight=1)
-root.grid_columnconfigure(1, weight=1)
-
 # Make editor
 
-editor = Text(root, width=75, bg=editor_theme["editor_bg"], fg=editor_theme["editor_fg"], font=editor_theme["editor_font"])
+editor = Text(root, width=160, bg=editor_theme["editor_bg"], fg=editor_theme["editor_fg"], font=editor_theme["editor_font"])
 
-editor.grid(row=0, column=1, sticky="nsew")
+editor.grid(row=0, column=0, sticky="nsew")
 root.grid_rowconfigure(0, weight=1)
 root.grid_columnconfigure(0, weight=1)
 
@@ -224,7 +215,7 @@ root.grid_columnconfigure(0, weight=1)
 
 code_out = Text(root, height=8, width=75, bg=editor_theme["out_bg"], fg=editor_theme["out_fg"], font=editor_theme["out_font"], state="normal")
 
-code_out.grid(row=1, column=1, sticky="nsew")
+code_out.grid(row=1, column=0, sticky="nsew")
 root.grid_rowconfigure(1, weight=0)
 root.grid_columnconfigure(0, weight=1)
 
