@@ -1,0 +1,12 @@
+editor_bg:#fcfcfd
+editor_fg:#0f111b
+editor_font:Consolas
+popup_bg:#080808
+popup_fg:#ffffff
+syn_hl.keyword:#e39400
+syn_hl.identifier:#00a3cc
+syn_hl.constant:#f2ce00
+syn_hl.string:#00a3cc
+syn_hl.special:#b3a1e6
+syn_hl.operator:#ce6f8f
+syn_hl.comment:#30365F
